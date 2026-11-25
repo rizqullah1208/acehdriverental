@@ -1,0 +1,56 @@
+:root {
+  /* Brand & Domain Palette */
+  --navy-950: #041c2c;
+  --navy-900: #06283d;
+  --navy-800: #0b3c5d;
+  --emerald-900: #064e3b;
+  --emerald-50: #ecfdf5;
+  --turquoise-600: #0d9488;
+  --turquoise-700: #0f766e;
+  --turquoise-50: #f0fdfa;
+  --gold-600: #d97706;
+  --gold-700: #b45309;
+  --gold-400: #fbbf24;
+  --gold-300: #fcd34d;
+  --gold-50: #fffbeb;
+  --gold-100: #fef3c7;
+
+  /* Neutral Canvas & Surfaces (Cool Neutral < 5% saturation) */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --text-main: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border-hairline: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* Semantic Status */
+  --success: #15803d;
+  --success-bg: #f0fdf4;
+  --warning: #b45309;
+  --warning-bg: #fffbeb;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-bg: #fef2f2;
+  --wa-green: #15803d;
+  --wa-green-hover: #166534;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Elevation & Radius */
+  --shadow-card: 0 1px 3px rgba(6, 40, 61, 0.06), 0 4px 12px rgba(6, 40, 61, 0.04);
+  --shadow-hover: 0 12px 28px rgba(6, 40, 61, 0.1);
+  --shadow-modal: 0 24px 48px rgba(4, 28, 44, 0.28);
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+
+  /* Layout & Motion */
+  --container-max: 1240px;
+  --header-height: 68px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 160ms var(--ease-out);
+}

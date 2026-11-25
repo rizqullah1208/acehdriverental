@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AcehDrive Rental — Sewa Mobil &amp; Transportasi Wisata Aceh</title>
+    <meta
+      name="description"
+      content="Aplikasi sewa mobil, kalkulator estimasi tarif, rekomendasi armada pintar, dan paket antar-jemput wisata di Provinsi Aceh."
+    />
+    <meta property="og:title" content="AcehDrive Rental — Sewa Mobil &amp; Transportasi Wisata Aceh" />
+    <meta
+      property="og:description"
+      content="Pilihan 10+ armada terawat mulai dari City Car, MPV Keluarga, SUV pegunungan Gayo, hingga Minibus rombongan di seluruh Provinsi Aceh."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link" id="skip-link">Langsung ke konten utama</a>
+
+    <!-- Static Simulation Disclaimer & Language Toggle -->
+    <div class="utility-strip">
+      <div class="container utility-strip-inner">
+        <p class="sim-notice" id="sim-notice">
+          Mode Simulasi: Seluruh tarif sewa, ketersediaan unit, dan kontak WhatsApp bersifat demonstrasi.
+        </p>
+        <div class="lang-switch" role="group" aria-label="Language Switcher">
+          <button type="button" class="lang-btn active" data-action="set-lang" data-lang="id" id="lang-id">ID</button>
+          <button type="button" class="lang-btn" data-action="set-lang" data-lang="en" id="lang-en">EN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky 3-Zone Top Bar -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#armada" class="brand-link" data-action="go-tab" data-tab="armada">
+          <svg width="32" height="32" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="34" height="34" rx="9" fill="#06283d" stroke="#d97706" stroke-width="2.5" />
+            <path d="M8 22L11 14H27L30 22V27H27V25H11V27H8V22Z" fill="#0d9488" stroke="#fcd34d" stroke-width="1.5" />
+            <circle cx="13" cy="22" r="2.2" fill="#fcd34d" />
+            <circle cx="25" cy="22" r="2.2" fill="#fcd34d" />
+          </svg>
+          AcehDrive <span>Rental</span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary Navigation">
+          <button type="button" class="nav-link active" data-action="go-tab" data-tab="armada" id="nav-armada">
+            Armada
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="rekomendasi" id="nav-rekomendasi">
+            Rekomendasi
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="antarjemput" id="nav-antarjemput">
+            Antar-Jemput
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="favorit" id="nav-favorit">
+            Favorit (0)
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="admin" id="nav-admin">
+            Kelola
+          </button>
+        </nav>
+
+        <div class="header-action">
+          <button type="button" class="btn btn-primary btn-sm header-cta-desktop" data-action="go-tab" data-tab="booking" id="nav-cta-booking">
+            Hitung Sewa
+          </button>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobile-menu-toggle"
+            data-action="toggle-mobile-menu"
+            aria-expanded="false"
+            aria-controls="mobile-drawer"
+            aria-label="Menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-drawer-links" aria-label="Mobile Navigation">
+          <button type="button" class="nav-link active" data-action="go-tab" data-tab="armada" data-mobile-nav="armada">
+            Armada
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="rekomendasi" data-mobile-nav="rekomendasi">
+            Rekomendasi
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="antarjemput" data-mobile-nav="antarjemput">
+            Antar-Jemput
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="favorit" data-mobile-nav="favorit">
+            Favorit (0)
+          </button>
+          <button type="button" class="nav-link" data-action="go-tab" data-tab="admin" data-mobile-nav="admin">
+            Kelola
+          </button>
+          <button type="button" class="btn btn-primary" style="margin-top:10px; width:100%;" data-action="go-tab" data-tab="booking" data-mobile-nav="booking">
+            Hitung Sewa
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Google Maps Quota Warning Banner (shown only on quota exhaustion) -->
+    <div id="gmp-quota-banner" class="gmp-quota-banner" role="alert" hidden>
+      <span>
+        Google Maps Platform quota reached. If you are the app owner, visit
+        <a
+          href="https://developers.google.com/maps/ai/ai-studio?utm_campaign=gmp_mcp_codeassist_v1_aistudio#quota_exceeded_errors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >maps developer site</a>
+        for instructions to update your account.
+      </span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="hero-kicker" id="hero-kicker">Transportasi Wisata &amp; Sewa Mobil · Provinsi Aceh</p>
+            <h1 id="hero-title">Perjalanan Nyaman &amp; Aman Menjelajahi Seluruh Penjuru Aceh</h1>
+            <p id="hero-desc">
+              Pilihan 10+ armada terawat mulai dari City Car, MPV Keluarga, SUV tangguh untuk rute pegunungan Gayo, hingga Minibus rombongan. Tersedia layanan Lepas Kunci maupun Dengan Sopir Berpengalaman.
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" data-action="go-tab" data-tab="armada" id="hero-cta-primary">
+                Jelajahi Armada
+              </button>
+              <button type="button" class="btn btn-ghost-light" data-action="go-tab" data-tab="booking" id="hero-cta-secondary">
+                Kalkulator Tarif
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <img
+              src="/src/assets/images/hero_aceh_coastal_highway_1795588888476.jpg"
+              alt="Perjalanan MPV di jalur pesisir Aceh"
+              referrerpolicy="no-referrer"
+            />
+            <div class="hero-media-scrim">
+              <span class="hero-media-caption" id="hero-media-caption">
+                Rute pesisir Aceh Barat menuju Lhoknga &amp; Banda Aceh
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-proof-strip" id="hero-proof-strip"></div>
+      </div>
+    </section>
+
+    <!-- Main Application Workspace -->
+    <main id="main-content" class="container main-workspace">
+      <section id="tab-armada" class="view-panel active" aria-label="Katalog Armada"></section>
+      <section id="tab-rekomendasi" class="view-panel" aria-label="Rekomendasi Armada"></section>
+      <section id="tab-booking" class="view-panel" aria-label="Kalkulator dan Pemesanan"></section>
+      <section id="tab-antarjemput" class="view-panel" aria-label="Paket Antar-Jemput"></section>
+      <section id="tab-favorit" class="view-panel" aria-label="Armada Favorit"></section>
+      <section id="tab-admin" class="view-panel" aria-label="Dashboard Pengelola"></section>
+    </main>
+
+    <!-- Accessible Modal Dialog -->
+    <div
+      class="modal-backdrop"
+      id="app-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <button type="button" class="modal-close-btn" id="modal-close-btn" data-action="close-modal" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast-msg" role="status" aria-live="polite"></div>
+
+    <!-- Quiet Footer -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong class="footer-brand">AcehDrive Rental</strong>
+          <p class="footer-meta" id="footer-desc">
+            Solusi penyewaan mobil dan transportasi wisata di Banda Aceh, Bandara SIM, Sabang, Aceh Besar, Takengon, hingga Lhokseumawe. Berjalan 100% client-side dengan penyimpanan lokal.
+          </p>
+        </div>
+        <div class="footer-notes">
+          <strong style="color:#e2e8f0;" id="footer-notice-title">Informasi Mode Demo</strong>
+          <span id="footer-notice-1">Seluruh tarif sewa, tahun unit, dan kontak WhatsApp merupakan data simulasi.</span>
+          <span id="footer-notice-2">Tautan titik penjemputan mengarah ke pencarian Google Maps.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

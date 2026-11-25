@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AcehDrive Rental — Sewa Mobil & Transportasi Wisata Aceh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-dark: #06283d;
+      --emerald-deep: #064e3b;
+      --turquoise: #0d9488;
+      --turquoise-light: #ccfbf1;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --gold-accent: #fcd34d;
+      --white: #ffffff;
+      --bg-page: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --danger: #dc2626;
+      --shadow-sm: 0 2px 6px rgba(6, 40, 61, 0.06);
+      --shadow-md: 0 10px 24px rgba(6, 40, 61, 0.12);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, .editorial-font {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Automotive & Aceh Geometric Pattern */
+    .hero-bg {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--emerald-deep) 100%);
+      background-image:
+        radial-gradient(rgba(252, 211, 77, 0.14) 1.5px, transparent 1.5px),
+        linear-gradient(135deg, var(--navy-dark) 0%, var(--emerald-deep) 100%);
+      background-size: 26px 26px, 100% 100%;
+    }
+
+    /* Simulation Disclaimer Banner */
+    .sim-banner {
+      background: linear-gradient(90deg, #fef3c7, #fde68a, #fef3c7);
+      color: #78350f;
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-bottom: 1px solid #f59e0b;
+      font-weight: 700;
+    }
+
+    /* Sticky Header */
+    header {
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+      border-bottom: 2.5px solid var(--gold);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--navy-dark);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      padding: 9px 13px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--turquoise-light);
+      color: var(--navy-dark);
+    }
+
+    .nav-btn.active {
+      background: var(--navy-dark);
+      color: var(--white);
+      box-shadow: 0 2px 6px rgba(6, 40, 61, 0.25);
+    }
+
+    .lang-toggle {
+      display: flex;
+      border: 1.5px solid var(--navy-dark);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border: none;
+      background: var(--white);
+      color: var(--navy-dark);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .lang-btn.active {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    /* Hero Section */
+    .hero {
+      color: var(--white);
+      padding: 54px 20px 60px;
+      text-align: center;
+      position: relative;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(217, 119, 6, 0.25);
+      border: 1px solid var(--gold-accent);
+      color: var(--gold-accent);
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.04rem;
+      color: #cbd5e1;
+      margin-bottom: 26px;
+      max-width: 730px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      flex-wrap: wrap;
+    }
+
+    .stat-item strong {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--gold-accent);
+      font-weight: 800;
+    }
+
+    .stat-item span {
+      font-size: 0.82rem;
+      color: #99f6e4;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 11px 20px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #b45309;
+      transform: translateY(-1px);
+    }
+
+    .btn-navy {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    .btn-navy:hover {
+      background: #0b3c5d;
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--navy-dark);
+      border: 1.5px solid var(--navy-dark);
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+    }
+
+    .btn-wa {
+      background: #16a34a;
+      color: var(--white);
+    }
+
+    .btn-wa:hover {
+      background: #15803d;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: var(--white);
+    }
+
+    .btn-sm {
+      padding: 7px 13px;
+      font-size: 0.82rem;
+      border-radius: 8px;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .section-view {
+      display: none;
+    }
+
+    .section-view.active {
+      display: block;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      color: var(--navy-dark);
+    }
+
+    .section-subtitle {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    /* Interactive SVG Pickup Map */
+    .map-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--turquoise);
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .map-box { grid-template-columns: 1fr; }
+    }
+
+    .svg-map-wrap svg {
+      width: 100%;
+      height: auto;
+      max-height: 290px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+      border: 1px solid #7dd3fc;
+    }
+
+    .map-pin {
+      cursor: pointer;
+    }
+
+    .map-pin circle {
+      transition: all 0.2s ease;
+    }
+
+    .map-pin:hover circle, .map-pin.selected circle {
+      fill: var(--gold);
+      r: 11;
+    }
+
+    .map-pin text {
+      font-size: 11px;
+      font-weight: 800;
+      fill: var(--navy-dark);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      background: var(--white);
+      padding: 16px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .filter-bar { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .filter-bar { grid-template-columns: 1fr; }
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--text-main);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--turquoise);
+    }
+
+    /* Fleet Cards Grid */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      height: 190px;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .card:hover .card-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .badge-cat {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--navy-dark);
+      color: var(--white);
+      padding: 4px 11px;
+      border-radius: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .badge-wilayah {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--navy-dark);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--white);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin-bottom: 6px;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      background: #f8fafc;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      font-size: 0.73rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .tag-info {
+      background: #ecfdf5;
+      color: var(--emerald-deep);
+      border: 1px solid #a7f3d0;
+    }
+
+    .tag-gold {
+      background: var(--gold-light);
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .price-tag {
+      font-weight: 800;
+      color: var(--turquoise);
+      font-size: 1rem;
+    }
+
+    /* Two-column Booking & CRUD */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--white);
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--navy-dark);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .checkbox-row input {
+      width: auto;
+    }
+
+    .budget-summary {
+      background: linear-gradient(135deg, var(--navy-dark), var(--emerald-deep));
+      color: var(--white);
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 16px;
+      border-left: 5px solid var(--gold-accent);
+    }
+
+    .budget-total {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--gold-accent);
+      margin: 4px 0;
+    }
+
+    /* Modal & Toast */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 40, 61, 0.7);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+      position: relative;
+      border-top: 6px solid var(--gold);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: #f1f5f9;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--navy-dark);
+      color: var(--white);
+      padding: 12px 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--gold-accent);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      font-size: 0.9rem;
+      font-weight: 600;
+      z-index: 300;
+      display: none;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: #f1f5f9;
+      color: var(--navy-dark);
+      font-weight: 800;
+    }
+
+    /* Image Upload & Preview in CRUD */
+    .img-upload-box {
+      border: 1.5px dashed #94a3b8;
+      border-radius: 10px;
+      padding: 12px;
+      background: #f8fafc;
+      text-align: center;
+    }
+
+    .img-preview-thumb {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+      background: #e2e8f0;
+    }
+
+    footer {
+      background: var(--navy-dark);
+      color: #cbd5e1;
+      padding: 36px 20px;
+      border-top: 4px solid var(--gold);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Simulation Disclaimer Banner -->
+  <div class="sim-banner" id="sim-banner">
+    ⚠️ Mode Demo / Simulasi: Seluruh tarif sewa mobil, ketersediaan unit armada, dan nomor kontak WhatsApp dalam aplikasi ini adalah data simulasi.
+  </div>
+
+  <!-- Sticky Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand" onclick="switchTab('armada'); return false;">
+        <!-- Automotive Emblem SVG -->
+        <svg width="36" height="36" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="34" height="34" rx="9" fill="#06283d" stroke="#d97706" stroke-width="2.5"/>
+          <path d="M8 22L11 14H27L30 22V27H27V25H11V27H8V22Z" fill="#0d9488" stroke="#fcd34d" stroke-width="1.5"/>
+          <circle cx="13" cy="22" r="2.2" fill="#fcd34d"/>
+          <circle cx="25" cy="22" r="2.2" fill="#fcd34d"/>
+        </svg>
+        AcehDrive <span>Rental</span>
+      </a>
+
+      <nav class="nav-links" id="main-nav">
+        <button class="nav-btn active" data-tab="armada" data-i18n="nav_fleet">Katalog Armada</button>
+        <button class="nav-btn" data-tab="rekomendasi" data-i18n="nav_rec">Rekomendasi Mobil</button>
+        <button class="nav-btn" data-tab="booking" data-i18n="nav_book">Kalkulator & Booking</button>
+        <button class="nav-btn" data-tab="antarjemput" data-i18n="nav_transfer">Paket Antar-Jemput</button>
+        <button class="nav-btn" data-tab="favorit" data-i18n="nav_fav">Favorit (<span id="fav-count">0</span>)</button>
+        <button class="nav-btn" data-tab="admin" data-i18n="nav_admin">Dashboard CRUD</button>
+      </nav>
+
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-id" onclick="setLang('id')">ID</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero hero-bg">
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero_badge">🚘 Transportasi Wisata & Sewa Mobil Terpercaya • Provinsi Aceh</div>
+      <h1 data-i18n="hero_title">Perjalanan Nyaman & Aman Menjelajahi Seluruh Penjuru Aceh</h1>
+      <p data-i18n="hero_desc">Pilihan 10+ armada terawat mulai dari City Car, MPV Keluarga, SUV tangguh untuk rute pegunungan Gayo, hingga Minibus rombongan. Tersedia layanan Lepas Kunci maupun Dengan Sopir Berpengalaman.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="switchTab('armada')" data-i18n="hero_cta1">Lihat 10+ Unit Armada</button>
+        <button class="btn btn-outline" onclick="switchTab('booking')" data-i18n="hero_cta2">Hitung Estimasi Sewa</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <strong>10+ Unit</strong>
+          <span data-i18n="stat_fleet">Armada Prima & Bersih</span>
+        </div>
+        <div class="stat-item">
+          <strong>6 Titik Layanan</strong>
+          <span>Bandara SIM • Banda Aceh • Sabang • Takengon • Lhokseumawe</span>
+        </div>
+        <div class="stat-item">
+          <strong>24/7 Support</strong>
+          <span data-i18n="stat_service">Lepas Kunci & Sopir + BBM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- 1. KATALOG ARMADA & PETA TITIK PENJEMPUTAN -->
+    <section id="tab-armada" class="section-view active">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-i18n="sec_fleet_title">Katalog Armada Mobil AcehDrive</h2>
+          <p class="section-subtitle" data-i18n="sec_fleet_sub">Pilih unit sesuai kapasitas penumpang, jenis transmisi, dan wilayah penjemputan Anda.</p>
+        </div>
+      </div>
+
+      <!-- Interactive SVG Pickup Map -->
+      <div class="map-box">
+        <div class="svg-map-wrap">
+          <svg viewBox="0 0 520 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Peta Jaringan Rute & Titik Penjemputan Aceh">
+            <!-- Stylized Aceh Map -->
+            <path d="M90,48 L145,42 L220,72 L340,95 L455,148 L430,215 L300,198 L185,158 L110,118 Z" fill="#99f6e4" stroke="#06283d" stroke-width="2.5"/>
+            <ellipse cx="72" cy="24" rx="18" ry="11" fill="#5eead4" stroke="#06283d" stroke-width="2"/>
+            <!-- Route Lines -->
+            <path d="M72,24 L106,52 L134,62 L145,92 M134,62 L262,145 M134,62 L355,104" stroke="#0d9488" stroke-width="1.8" stroke-dasharray="4 3" fill="none"/>
+
+            <!-- Pickup Pins -->
+            <g class="map-pin" id="pin-Sabang" onclick="filterByMap('Sabang')">
+              <circle cx="72" cy="24" r="8" fill="#06283d" stroke="#fff" stroke-width="2"/>
+              <text x="95" y="28">Pelabuhan Balohan / Sabang</text>
+            </g>
+            <g class="map-pin" id="pin-Banda Aceh" onclick="filterByMap('Banda Aceh')">
+              <circle cx="106" cy="54" r="8" fill="#06283d" stroke="#fff" stroke-width="2"/>
+              <text x="15" y="72">Banda Aceh & Ulee Lheue</text>
+            </g>
+            <g class="map-pin" id="pin-Bandara SIM" onclick="filterByMap('Bandara SIM')">
+              <circle cx="136" cy="64" r="8" fill="#d97706" stroke="#fff" stroke-width="2"/>
+              <text x="148" y="62">✈ Bandara SIM (Blang Bintang)</text>
+            </g>
+            <g class="map-pin" id="pin-Aceh Besar" onclick="filterByMap('Aceh Besar')">
+              <circle cx="145" cy="95" r="8" fill="#06283d" stroke="#fff" stroke-width="2"/>
+              <text x="158" y="99">Aceh Besar (Lhoknga/Jantho)</text>
+            </g>
+            <g class="map-pin" id="pin-Takengon" onclick="filterByMap('Takengon')">
+              <circle cx="262" cy="145" r="8" fill="#06283d" stroke="#fff" stroke-width="2"/>
+              <text x="275" y="150">Takengon (Aceh Tengah)</text>
+            </g>
+            <g class="map-pin" id="pin-Lhokseumawe" onclick="filterByMap('Lhokseumawe')">
+              <circle cx="355" cy="104" r="8" fill="#06283d" stroke="#fff" stroke-width="2"/>
+              <text x="368" y="102">Lhokseumawe</text>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h3 style="color: var(--navy-dark); margin-bottom: 8px; font-size:1.2rem;" data-i18n="map_title">Peta Titik Penjemputan & Rute Layanan</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="map_desc">
+            Klik titik wilayah pada peta untuk menyaring armada yang tersedia di lokasi penjemputan tersebut, atau buka titik jemput di Google Maps.
+          </p>
+          <div style="display:flex; gap:7px; flex-wrap:wrap;">
+            <button class="btn btn-sm btn-navy" onclick="filterByMap('')">Semua Wilayah</button>
+            <button class="btn btn-sm btn-outline" onclick="filterByMap('Bandara SIM')">✈ Bandara SIM</button>
+            <button class="btn btn-sm btn-outline" onclick="filterByMap('Banda Aceh')">Banda Aceh</button>
+            <button class="btn btn-sm btn-outline" onclick="filterByMap('Sabang')">Sabang</button>
+            <button class="btn btn-sm btn-outline" onclick="filterByMap('Aceh Besar')">Aceh Besar</button>
+            <button class="btn btn-sm btn-outline" onclick="filterByMap('Takengon')">Takengon</button>
+            <button class="btn btn-sm btn-outline" onclick="filterByMap('Lhokseumawe')">Lhokseumawe</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-Filter & Sort Bar -->
+      <div class="filter-bar">
+        <input type="text" id="search-car" placeholder="Cari nama mobil (misal: Innova, HiAce, Fortuner)..." oninput="renderArmada()" />
+        <select id="filter-wilayah" onchange="renderArmada()">
+          <option value="">Semua Titik Jemput</option>
+          <option value="Bandara SIM">Bandara SIM</option>
+          <option value="Banda Aceh">Banda Aceh</option>
+          <option value="Sabang">Sabang</option>
+          <option value="Aceh Besar">Aceh Besar</option>
+          <option value="Takengon">Takengon (Aceh Tengah)</option>
+          <option value="Lhokseumawe">Lhokseumawe</option>
+        </select>
+        <select id="filter-kategori" onchange="renderArmada()">
+          <option value="">Semua Kategori</option>
+          <option value="City Car / Hatchback">City Car / Hatchback</option>
+          <option value="MPV Keluarga">MPV Keluarga</option>
+          <option value="SUV / Medan Berat">SUV / Medan Berat</option>
+          <option value="Minibus / Rombongan">Minibus / Rombongan</option>
+          <option value="Luxury / VIP">Luxury / VIP</option>
+        </select>
+        <select id="filter-transmisi" onchange="renderArmada()">
+          <option value="">Semua Transmisi</option>
+          <option value="Matic">Matic (AT)</option>
+          <option value="Manual">Manual (MT)</option>
+        </select>
+        <select id="sort-car" onchange="renderArmada()">
+          <option value="default">Urutkan: Rekomendasi</option>
+          <option value="price-asc">Harga Sewa Terendah</option>
+          <option value="price-desc">Harga Sewa Tertinggi</option>
+          <option value="seat-desc">Kapasitas Kursi Terbanyak</option>
+        </select>
+      </div>
+
+      <div class="grid-cards" id="armada-grid"></div>
+    </section>
+
+    <!-- 2. REKOMENDASI MOBIL PINTAR (RULE-BASED) -->
+    <section id="tab-rekomendasi" class="section-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-i18n="sec_rec_title">Rekomendasi Armada Pintar (Rule-Based)</h2>
+          <p class="section-subtitle" data-i18n="sec_rec_sub">Sesuaikan jumlah penumpang, medan rute wisata Aceh, dan batas anggaran harian Anda.</p>
+        </div>
+      </div>
+
+      <div class="filter-bar" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="form-group" style="margin:0;">
+          <label>Jumlah Penumpang</label>
+          <select id="rec-pax" onchange="renderRekomendasi()">
+            <option value="1">1–4 Orang (Personal / Pasangan)</option>
+            <option value="5" selected>5–7 Orang (Keluarga)</option>
+            <option value="8">8–14 Orang (Rombongan / Grup)</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0;">
+          <label>Rute & Medan Perjalanan</label>
+          <select id="rec-rute" onchange="renderRekomendasi()">
+            <option value="">Semua Rute Aceh</option>
+            <option value="kota">Dalam Kota Banda Aceh / Pesisir</option>
+            <option value="gunung">Pegunungan Takengon / Dataran Tinggi Gayo</option>
+            <option value="rombongan">Tur Rombongan Lintas Kabupaten</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0;">
+          <label>Anggaran Sewa Maksimal / Hari</label>
+          <select id="rec-budget" onchange="renderRekomendasi()">
+            <option value="99999999">Semua Anggaran</option>
+            <option value="450000">Maksimal Rp 450.000 / hari</option>
+            <option value="750000">Maksimal Rp 750.000 / hari</option>
+            <option value="1500000">Maksimal Rp 1.500.000 / hari</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid-cards" id="rekomendasi-grid"></div>
+    </section>
+
+    <!-- 3. KALKULATOR SEWA & FORM BOOKING DEMO -->
+    <section id="tab-booking" class="section-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-i18n="sec_book_title">Kalkulator Estimasi Sewa & Pemesanan Demo</h2>
+          <p class="section-subtitle" data-i18n="sec_book_sub">Hitung rincian tarif sewa secara transparan, simpan simulasi pesanan, atau kirim format pesanan ke WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3 style="margin-bottom:14px; color:var(--navy-dark);">Form Simulasi Pemesanan</h3>
+          <div class="form-group">
+            <label>Pilih Unit Armada</label>
+            <select id="book-car" onchange="calculateRental()"></select>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div class="form-group">
+              <label>Tanggal Mulai Sewa</label>
+              <input type="date" id="book-date" value="2026-12-10" onchange="calculateRental()" />
+            </div>
+            <div class="form-group">
+              <label>Durasi Sewa (1–14 Hari)</label>
+              <input type="number" id="book-days" min="1" max="14" value="3" oninput="calculateRental()" />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div class="form-group">
+              <label>Paket Layanan</label>
+              <select id="book-service" onchange="calculateRental()">
+                <option value="lepas">Lepas Kunci (Self-Drive)</option>
+                <option value="sopir">Dengan Sopir (+ Rp 200.000/hari)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Lokasi Penjemputan</label>
+              <select id="book-pickup" onchange="calculateRental()">
+                <option value="Bandara Sultan Iskandar Muda (SIM)">Bandara SIM (Blang Bintang)</option>
+                <option value="Pelabuhan Ulee Lheue Banda Aceh">Pelabuhan Ulee Lheue</option>
+                <option value="Hotel Area Kota Banda Aceh">Hotel Area Kota Banda Aceh</option>
+                <option value="Pelabuhan Balohan Sabang">Pelabuhan Balohan Sabang</option>
+                <option value="Kota Takengon (Aceh Tengah)">Kota Takengon (Aceh Tengah)</option>
+                <option value="Kota Lhokseumawe">Kota Lhokseumawe</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Opsi Tambahan (Add-ons):</label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="addon-gayo" onchange="calculateRental()" />
+              <span>Rute Luar Kota / Pegunungan Gayo (+ Rp 100.000 / hari)</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="addon-babyseat" onchange="calculateRental()" />
+              <span>Kursi Bayi / Child Safety Seat (+ Rp 50.000 / hari)</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label>Nama Pemesan (Simulasi)</label>
+            <input type="text" id="book-customer" placeholder="Contoh: Ahmad Fauzan" value="Ahmad Fauzan" />
+          </div>
+
+          <div class="budget-summary">
+            <div style="font-size:0.85rem; opacity:0.9;">Total Estimasi Biaya Sewa (Simulasi)</div>
+            <div class="budget-total" id="rental-total-display">Rp 0</div>
+            <div style="font-size:0.8rem; color:#99f6e4; margin-bottom:14px;" id="rental-breakdown"></div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn btn-primary" style="flex:1;" onclick="saveBookingHistory()">Simpan Riwayat Simulasi</button>
+              <a id="btn-wa-booking" href="#" target="_blank" rel="noopener" class="btn btn-wa" style="flex:1;">Kirim via WhatsApp (Demo)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <h3 style="color:var(--navy-dark);">Riwayat Simulasi Pesanan (localStorage)</h3>
+            <button class="btn btn-sm btn-outline" onclick="clearBookingHistory()">Hapus Riwayat</button>
+          </div>
+          <div id="booking-history-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PAKET LAYANAN ANTAR-JEMPUT -->
+    <section id="tab-antarjemput" class="section-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-i18n="sec_trans_title">Paket Layanan Antar-Jemput & Drop-off Aceh</h2>
+          <p class="section-subtitle" data-i18n="sec_trans_sub">Layanan transfer titik-ke-titik sudah termasuk mobil, sopir, dan BBM (tarif simulasi).</p>
+        </div>
+      </div>
+      <div class="grid-cards" id="antarjemput-grid"></div>
+    </section>
+
+    <!-- 5. FAVORIT -->
+    <section id="tab-favorit" class="section-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-i18n="sec_fav_title">Armada Mobil Favorit</h2>
+          <p class="section-subtitle" data-i18n="sec_fav_sub">Daftar mobil pilihan Anda yang tersimpan otomatis di peramban.</p>
+        </div>
+      </div>
+      <div class="grid-cards" id="favorit-grid"></div>
+    </section>
+
+    <!-- 6. DASHBOARD ADMIN DEMO (CRUD) -->
+    <section id="tab-admin" class="section-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-i18n="sec_admin_title">Dashboard Demo Pengelola Armada (CRUD)</h2>
+          <p class="section-subtitle" data-i18n="sec_admin_sub">Tambah, edit, atau hapus data Armada Mobil dan Paket Antar-Jemput langsung di localStorage.</p>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="openResetConfirm()">Reset Data Awal</button>
+      </div>
+
+      <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;" id="crud-tabs">
+        <button class="btn btn-navy btn-sm" data-ent="armada" onclick="switchCrudEntity('armada')">Kelola Armada Mobil</button>
+        <button class="btn btn-outline btn-sm" data-ent="antarjemput" onclick="switchCrudEntity('antarjemput')">Kelola Paket Antar-Jemput</button>
+      </div>
+
+      <div class="two-col" style="grid-template-columns: 1fr 1.6fr;">
+        <div class="panel">
+          <h3 id="crud-form-title" style="margin-bottom:12px; color:var(--navy-dark);">Tambah Armada Baru</h3>
+          <form id="crud-form" onsubmit="handleCrudSubmit(event)">
+            <input type="hidden" id="crud-id" />
+            <div id="crud-fields"></div>
+            <div style="display:flex; gap:8px; margin-top:14px;">
+              <button type="submit" class="btn btn-primary" style="flex:1;">Simpan Data</button>
+              <button type="button" class="btn btn-outline" onclick="resetCrudForm()">Batal</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr id="crud-thead"></tr>
+            </thead>
+            <tbody id="crud-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Detail Unit & Confirmations -->
+  <div class="modal-backdrop" id="detail-modal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="document.getElementById('detail-modal').classList.remove('open')">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast-msg"></div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong style="color:#fcd34d; font-size:1.15rem;">AcehDrive Rental</strong>
+        <p style="margin-top:6px; max-width:540px;">Solusi penyewaan mobil dan transportasi wisata di Banda Aceh, Bandara SIM, Sabang, Aceh Besar, Takengon, hingga Lhokseumawe. Berjalan 100% client-side menggunakan localStorage.</p>
+      </div>
+      <div>
+        <p><strong>Pemberitahuan Mode Demo:</strong></p>
+        <p>• Seluruh harga sewa, tahun unit, dan kontak WhatsApp merupakan data simulasi.</p>
+        <p>• Tautan titik jemput mengarah langsung ke pencarian Google Maps tanpa API Key.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ==========================================================================
+       1. INITIAL SEED DATA (10 Armada Realistis Aceh & Paket Antar-Jemput)
+       ========================================================================== */
+    const FALLBACK_CAR_SVG = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='360' viewBox='0 0 600 360'><rect width='600' height='360' fill='%2306283d'/><path d='M130 220 L170 150 H410 L460 220 V260 H425 V240 H175 V260 H130 Z' fill='%230d9488' stroke='%23fcd34d' stroke-width='4'/><circle cx='195' cy='240' r='26' fill='%2306283d' stroke='%23fcd34d' stroke-width='4'/><circle cx='405' cy='240' r='26' fill='%2306283d' stroke='%23fcd34d' stroke-width='4'/><text x='300' y='95' fill='%23ffffff' font-family='sans-serif' font-size='22' font-weight='bold' text-anchor='middle'>AcehDrive Rental Fleet</text></svg>";
+
+    const DEFAULT_DATA = {
+      armada: [
+        {
+          id: "car-01",
+          nama: "Toyota Kijang Innova Reborn 2.4 V",
+          kategori: "MPV Keluarga",
+          wilayah: "Bandara SIM",
+          transmisi: "Matic",
+          kursi: 7,
+          bagasi: "3 Koper Besar",
+          bbm: "Diesel",
+          tahun: 2023,
+          hargaLepasKunci: 550000,
+          hargaDenganSopir: 750000,
+          bisaLepasKunci: true,
+          fasilitas: ["AC Double Blower", "USB Fast Charger", "Kotak P3K", "Kamera Mundur", "Baby Seat Opsional"],
+          ruteCocok: ["kota", "gunung"],
+          imageUrl: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bandara+Sultan+Iskandar+Muda+Aceh",
+          kontak: "6281200001001"
+        },
+        {
+          id: "car-02",
+          nama: "Toyota Avanza Veloz 1.5 Q",
+          kategori: "MPV Keluarga",
+          wilayah: "Banda Aceh",
+          transmisi: "Matic",
+          kursi: 7,
+          bagasi: "2 Koper Besar",
+          bbm: "Bensin",
+          tahun: 2023,
+          hargaLepasKunci: 400000,
+          hargaDenganSopir: 600000,
+          bisaLepasKunci: true,
+          fasilitas: ["AC Double Blower", "Apple CarPlay / Android Auto", "Car Charger", "Kotak P3K"],
+          ruteCocok: ["kota"],
+          imageUrl: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Banda+Aceh",
+          kontak: "6281200001002"
+        },
+        {
+          id: "car-03",
+          nama: "Toyota HiAce Commuter 14 Seat",
+          kategori: "Minibus / Rombongan",
+          wilayah: "Banda Aceh",
+          transmisi: "Manual",
+          kursi: 14,
+          bagasi: "6 Koper Besar",
+          bbm: "Diesel",
+          tahun: 2022,
+          hargaLepasKunci: 1100000,
+          hargaDenganSopir: 1300000,
+          bisaLepasKunci: false,
+          fasilitas: ["AC Plafon Per Baris", "Audio Karaoke & Mic", "Reclining Seat", "Bagasi Luas", "Kotak P3K"],
+          ruteCocok: ["kota", "gunung", "rombongan"],
+          imageUrl: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pelabuhan+Ulee+Lheue+Banda+Aceh",
+          kontak: "6281200001003"
+        },
+        {
+          id: "car-04",
+          nama: "Toyota Fortuner 2.8 VRZ 4x2",
+          kategori: "SUV / Medan Berat",
+          wilayah: "Takengon",
+          transmisi: "Matic",
+          kursi: 7,
+          bagasi: "3 Koper Besar",
+          bbm: "Diesel",
+          tahun: 2023,
+          hargaLepasKunci: 950000,
+          hargaDenganSopir: 1150000,
+          bisaLepasKunci: true,
+          fasilitas: ["Suspensi Tangguh Pegunungan Gayo", "AC Dual Zone", "Cruise Control", "Kotak P3K"],
+          ruteCocok: ["kota", "gunung"],
+          imageUrl: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Takengon+Aceh+Tengah",
+          kontak: "6281200001004"
+        },
+        {
+          id: "car-05",
+          nama: "Mitsubishi Pajero Sport Dakar",
+          kategori: "SUV / Medan Berat",
+          wilayah: "Bandara SIM",
+          transmisi: "Matic",
+          kursi: 7,
+          bagasi: "3 Koper Besar",
+          bbm: "Diesel",
+          tahun: 2023,
+          hargaLepasKunci: 950000,
+          hargaDenganSopir: 1150000,
+          bisaLepasKunci: true,
+          fasilitas: ["Torsi Tinggi Tanjakan Gayo", "Sunroof", "AC Double Blower", "Car Charger"],
+          ruteCocok: ["kota", "gunung"],
+          imageUrl: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bandara+Sultan+Iskandar+Muda+Aceh",
+          kontak: "6281200001005"
+        },
+        {
+          id: "car-06",
+          nama: "Honda Brio Satya E CVT",
+          kategori: "City Car / Hatchback",
+          wilayah: "Sabang",
+          transmisi: "Matic",
+          kursi: 5,
+          bagasi: "1 Koper Sedang",
+          bbm: "Bensin",
+          tahun: 2023,
+          hargaLepasKunci: 300000,
+          hargaDenganSopir: 500000,
+          bisaLepasKunci: true,
+          fasilitas: ["Hemat BBM", "Lincah Jalan Pulau Weh", "AC Dingin", "Bluetooth Audio"],
+          ruteCocok: ["kota"],
+          imageUrl: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pelabuhan+Balohan+Sabang",
+          kontak: "6281200001006"
+        },
+        {
+          id: "car-07",
+          nama: "Mitsubishi Xpander Cross Premium",
+          kategori: "MPV Keluarga",
+          wilayah: "Aceh Besar",
+          transmisi: "Matic",
+          kursi: 7,
+          bagasi: "2 Koper Besar",
+          bbm: "Bensin",
+          tahun: 2023,
+          hargaLepasKunci: 450000,
+          hargaDenganSopir: 650000,
+          bisaLepasKunci: true,
+          fasilitas: ["Ground Clearance Tinggi", "AC Digital", "Car Charger", "Baby Seat Opsional"],
+          ruteCocok: ["kota", "gunung"],
+          imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lhoknga+Aceh+Besar",
+          kontak: "6281200001007"
+        },
+        {
+          id: "car-08",
+          nama: "Toyota Alphard 2.5 G VIP",
+          kategori: "Luxury / VIP",
+          wilayah: "Bandara SIM",
+          transmisi: "Matic",
+          kursi: 6,
+          bagasi: "3 Koper Besar",
+          bbm: "Bensin",
+          tahun: 2022,
+          hargaLepasKunci: 2200000,
+          hargaDenganSopir: 2400000,
+          bisaLepasKunci: false,
+          fasilitas: ["Captain Seat Ottoman", "Dual Sunroof", "Kabin Kedap Suara", "Air Purifier"],
+          ruteCocok: ["kota"],
+          imageUrl: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bandara+Sultan+Iskandar+Muda+Aceh",
+          kontak: "6281200001008"
+        },
+        {
+          id: "car-09",
+          nama: "Isuzu Elf Long Giga 17 Seat",
+          kategori: "Minibus / Rombongan",
+          wilayah: "Lhokseumawe",
+          transmisi: "Manual",
+          kursi: 17,
+          bagasi: "7 Koper Besar",
+          bbm: "Diesel",
+          tahun: 2022,
+          hargaLepasKunci: 1250000,
+          hargaDenganSopir: 1450000,
+          bisaLepasKunci: false,
+          fasilitas: ["Kapasitas 17 Penumpang", "AC Ducting Dingin", "LED TV & Audio", "Bagasi Belakang"],
+          ruteCocok: ["kota", "gunung", "rombongan"],
+          imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Kota+Lhokseumawe+Aceh",
+          kontak: "6281200001009"
+        },
+        {
+          id: "car-10",
+          nama: "Toyota Agya 1.2 G GR Sport",
+          kategori: "City Car / Hatchback",
+          wilayah: "Banda Aceh",
+          transmisi: "Manual",
+          kursi: 5,
+          bagasi: "1 Koper Sedang",
+          bbm: "Bensin",
+          tahun: 2023,
+          hargaLepasKunci: 275000,
+          hargaDenganSopir: 475000,
+          bisaLepasKunci: true,
+          fasilitas: ["Sangat Irit BBM", "AC Sejuk", "USB Charger", "Kotak P3K"],
+          ruteCocok: ["kota"],
+          imageUrl: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80",
+          mapsUrl: "https://www.google.com/maps/search/?api=1&query=Banda+Aceh",
+          kontak: "6281200001010"
+        }
+      ],
+      antarjemput: [
+        {
+          id: "trf-01",
+          nama: "Airport Transfer: Bandara SIM ⇄ Kota Banda Aceh",
+          rute: "Bandara Sultan Iskandar Muda - Hotel Pusat Kota / Pelabuhan Ulee Lheue",
+          durasi: "± 30–45 Menit",
+          armada: "Avanza Veloz / Innova Reborn",
+          harga: 180000,
+          inklusi: "Mobil + Sopir + BBM + Parkir Bandara (Simulasi)"
+        },
+        {
+          id: "trf-02",
+          nama: "Shuttle Wisata Pulau Weh: Pelabuhan Balohan ⇄ Pantai Iboih",
+          rute: "Pelabuhan Balohan Sabang - Pantai Iboih / Tugu Kilometer Nol",
+          durasi: "± 45–60 Menit",
+          armada: "MPV Keluarga / City Car",
+          harga: 250000,
+          inklusi: "Mobil + Sopir Lokal Sabang + BBM (Simulasi)"
+        },
+        {
+          id: "trf-03",
+          nama: "Overland Gayo: Banda Aceh ⇄ Takengon (Aceh Tengah)",
+          rute: "Banda Aceh / Bandara SIM - Bireuen - Takengon (Danau Laut Tawar)",
+          durasi: "± 6–7 Jam Perjalanan",
+          armada: "Innova Reborn Diesel / Fortuner",
+          harga: 1350000,
+          inklusi: "Mobil + Sopir Berpengalaman Medan Pegunungan + BBM (Simulasi)"
+        },
+        {
+          id: "trf-04",
+          nama: "Transfer Pantai Timur: Bandara SIM ⇄ Kota Lhokseumawe",
+          rute: "Banda Aceh - Pidie - Bireuen - Lhokseumawe",
+          durasi: "± 5–6 Jam Perjalanan",
+          armada: "Innova Reborn / Xpander Cross",
+          harga: 1150000,
+          inklusi: "Mobil + Sopir + BBM (Simulasi)"
+        }
+      ]
+    };
+
+    /* ==========================================================================
+       2. STATE & LOCALSTORAGE MANAGEMENT
+       ========================================================================== */
+    const STORAGE_KEYS = {
+      armada: 'acehdrive_armada',
+      antarjemput: 'acehdrive_antarjemput',
+      favorit: 'acehdrive_favorit',
+      bookings: 'acehdrive_bookings',
+      lang: 'acehdrive_lang'
+    };
+
+    let state = {
+      armada: [],
+      antarjemput: [],
+      favorit: [],
+      bookings: [],
+      lang: 'id',
+      crudEntity: 'armada'
+    };
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-msg');
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2800);
+    }
+
+    function initStorage() {
+      ['armada', 'antarjemput'].forEach(key => {
+        const saved = localStorage.getItem(STORAGE_KEYS[key]);
+        if (saved) {
+          state[key] = JSON.parse(saved);
+        } else {
+          state[key] = JSON.parse(JSON.stringify(DEFAULT_DATA[key]));
+          localStorage.setItem(STORAGE_KEYS[key], JSON.stringify(state[key]));
+        }
+      });
+
+      const savedFav = localStorage.getItem(STORAGE_KEYS.favorit);
+      state.favorit = savedFav ? JSON.parse(savedFav) : [];
+
+      const savedBookings = localStorage.getItem(STORAGE_KEYS.bookings);
+      state.bookings = savedBookings ? JSON.parse(savedBookings) : [];
+
+      const savedLang = localStorage.getItem(STORAGE_KEYS.lang);
+      if (savedLang) state.lang = savedLang;
+    }
+
+    function saveEntity(key) {
+      localStorage.setItem(STORAGE_KEYS[key], JSON.stringify(state[key]));
+    }
+
+    function openResetConfirm() {
+      const modalContent = document.getElementById('modal-content');
+      modalContent.innerHTML = `
+        <h3 style="color:var(--navy-dark); margin-bottom:10px;">Konfirmasi Reset Data Demo</h3>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:18px;">
+          Kembalikan seluruh data Armada Mobil dan Paket Antar-Jemput ke kondisi awal? Perubahan yang Anda simpan melalui CRUD akan dihapus.
+        </p>
+        <div style="display:flex; gap:10px; justify-content:flex-end;">
+          <button class="btn btn-outline" onclick="document.getElementById('detail-modal').classList.remove('open')">Batal</button>
+          <button class="btn btn-danger" onclick="executeResetDemo()">Ya, Reset Sekarang</button>
+        </div>
+      `;
+      document.getElementById('detail-modal').classList.add('open');
+    }
+
+    function executeResetDemo() {
+      ['armada', 'antarjemput'].forEach(key => {
+        state[key] = JSON.parse(JSON.stringify(DEFAULT_DATA[key]));
+        saveEntity(key);
+      });
+      document.getElementById('detail-modal').classList.remove('open');
+      resetCrudForm();
+      renderAll();
+      showToast('Data armada dan paket berhasil direset ke kondisi awal.');
+    }
+
+    /* ==========================================================================
+       3. INTERNATIONALIZATION (ID | EN)
+       ========================================================================== */
+    const I18N = {
+      id: {
+        nav_fleet: "Katalog Armada",
+        nav_rec: "Rekomendasi Mobil",
+        nav_book: "Kalkulator & Booking",
+        nav_transfer: "Paket Antar-Jemput",
+        nav_fav: "Favorit",
+        nav_admin: "Dashboard CRUD",
+        hero_badge: "🚘 Transportasi Wisata & Sewa Mobil Terpercaya • Provinsi Aceh",
+        hero_title: "Perjalanan Nyaman & Aman Menjelajahi Seluruh Penjuru Aceh",
+        hero_desc: "Pilihan 10+ armada terawat mulai dari City Car, MPV Keluarga, SUV tangguh untuk rute pegunungan Gayo, hingga Minibus rombongan. Tersedia layanan Lepas Kunci maupun Dengan Sopir Berpengalaman.",
+        hero_cta1: "Lihat 10+ Unit Armada",
+        hero_cta2: "Hitung Estimasi Sewa",
+        stat_fleet: "Armada Prima & Bersih",
+        stat_service: "Lepas Kunci & Sopir + BBM",
+        sec_fleet_title: "Katalog Armada Mobil AcehDrive",
+        sec_fleet_sub: "Pilih unit sesuai kapasitas penumpang, jenis transmisi, dan wilayah penjemputan Anda.",
+        map_title: "Peta Titik Penjemputan & Rute Layanan",
+        map_desc: "Klik titik wilayah pada peta untuk menyaring armada yang tersedia di lokasi penjemputan tersebut, atau buka titik jemput di Google Maps.",
+        sec_rec_title: "Rekomendasi Armada Pintar (Rule-Based)",
+        sec_rec_sub: "Sesuaikan jumlah penumpang, medan rute wisata Aceh, dan batas anggaran harian Anda.",
+        sec_book_title: "Kalkulator Estimasi Sewa & Pemesanan Demo",
+        sec_book_sub: "Hitung rincian tarif sewa secara transparan, simpan simulasi pesanan, atau kirim format pesanan ke WhatsApp.",
+        sec_trans_title: "Paket Layanan Antar-Jemput & Drop-off Aceh",
+        sec_trans_sub: "Layanan transfer titik-ke-titik sudah termasuk mobil, sopir, dan BBM (tarif simulasi).",
+        sec_fav_title: "Armada Mobil Favorit",
+        sec_fav_sub: "Daftar mobil pilihan Anda yang tersimpan otomatis di peramban.",
+        sec_admin_title: "Dashboard Demo Pengelola Armada (CRUD)",
+        sec_admin_sub: "Tambah, edit, atau hapus data Armada Mobil dan Paket Antar-Jemput langsung di localStorage."
+      },
+      en: {
+        nav_fleet: "Car Fleet",
+        nav_rec: "Smart Recommender",
+        nav_book: "Calculator & Booking",
+        nav_transfer: "Airport & Transfers",
+        nav_fav: "Favorites",
+        nav_admin: "CRUD Dashboard",
+        hero_badge: "🚘 Trusted Car Rental & Tour Transport • Aceh Province",
+        hero_title: "Comfortable & Safe Journeys Across Every Corner of Aceh",
+        hero_desc: "Choose from 10+ well-maintained vehicles ranging from City Cars, Family MPVs, rugged SUVs for Gayo highlands, to Group Minibuses. Available for Self-Drive or Chauffeur service.",
+        hero_cta1: "Browse 10+ Vehicles",
+        hero_cta2: "Calculate Rental Cost",
+        stat_fleet: "Clean & Prime Vehicles",
+        stat_service: "Self-Drive & Chauffeur + Fuel",
+        sec_fleet_title: "AcehDrive Car Fleet Catalog",
+        sec_fleet_sub: "Select a vehicle based on passenger capacity, transmission type, and your pickup area.",
+        map_title: "Pickup Points & Service Route Map",
+        map_desc: "Click a region pin on the map to filter available vehicles at that pickup location, or open the pickup point in Google Maps.",
+        sec_rec_title: "Smart Fleet Recommender (Rule-Based)",
+        sec_rec_sub: "Match your passenger count, Aceh road terrain, and daily rental budget limit.",
+        sec_book_title: "Rental Cost Calculator & Demo Booking",
+        sec_book_sub: "Calculate transparent rental rates, save booking simulations, or send formatted orders via WhatsApp.",
+        sec_trans_title: "Aceh Airport & Point-to-Point Transfer Packages",
+        sec_trans_sub: "Point-to-point transfer services inclusive of vehicle, driver, and fuel (simulated rates).",
+        sec_fav_title: "Favorite Vehicles",
+        sec_fav_sub: "Your saved vehicle shortlist stored locally in your browser.",
+        sec_admin_title: "Fleet Manager Demo Dashboard (CRUD)",
+        sec_admin_sub: "Create, edit, or delete Car Fleet and Transfer Packages directly in localStorage."
+      }
+    };
+
+    function setLang(lang) {
+      state.lang = lang;
+      localStorage.setItem(STORAGE_KEYS.lang, lang);
+      document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[lang][key]) {
+          el.textContent = I18N[lang][key];
+        }
+      });
+      updateFavCounter();
+      renderAll();
+    }
+
+    /* ==========================================================================
+       4. NAVIGATION & UTILITIES
+       ========================================================================== */
+    function switchTab(tabId) {
+      document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
+      document.getElementById(`tab-${tabId}`).classList.add('active');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+      });
+
+      if (tabId === 'booking') initBookingForm();
+      if (tabId === 'favorit') renderFavorit();
+      if (tabId === 'admin') renderCrudTable();
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
+    });
+
+    function formatRupiah(num) {
+      return 'Rp ' + Number(num || 0).toLocaleString('id-ID');
+    }
+
+    function isFavorite(carId) {
+      return state.favorit.includes(carId);
+    }
+
+    function toggleFavorite(carId) {
+      const idx = state.favorit.indexOf(carId);
+      if (idx > -1) {
+        state.favorit.splice(idx, 1);
+        showToast(state.lang === 'id' ? 'Dihapus dari Armada Favorit.' : 'Removed from Favorite Fleet.');
+      } else {
+        state.favorit.push(carId);
+        showToast(state.lang === 'id' ? 'Disimpan ke Armada Favorit!' : 'Saved to Favorite Fleet!');
+      }
+      localStorage.setItem(STORAGE_KEYS.favorit, JSON.stringify(state.favorit));
+      updateFavCounter();
+      renderAll();
+    }
+
+    function updateFavCounter() {
+      const navFav = document.querySelector('[data-tab="favorit"]');
+      const label = I18N[state.lang].nav_fav;
+      navFav.innerHTML = `${label} (<span id="fav-count">${state.favorit.length}</span>)`;
+    }
+
+    function filterByMap(wilayah) {
+      document.getElementById('filter-wilayah').value = wilayah;
+      document.querySelectorAll('.map-pin').forEach(pin => pin.classList.remove('selected'));
+      if (wilayah) {
+        const activePin = document.getElementById(`pin-${wilayah}`);
+        if (activePin) activePin.classList.add('selected');
+        showToast(`Menampilkan armada siap jemput di ${wilayah}`);
+      }
+      renderArmada();
+    }
+
+    /* ==========================================================================
+       5. RENDER ARMADA & MODAL DETAIL
+       ========================================================================== */
+    function renderArmada() {
+      const q = document.getElementById('search-car').value.toLowerCase();
+      const wil = document.getElementById('filter-wilayah').value;
+      const kat = document.getElementById('filter-kategori').value;
+      const trans = document.getElementById('filter-transmisi').value;
+      const sort = document.getElementById('sort-car').value;
+
+      let list = state.armada.filter(c => {
+        const matchQ = c.nama.toLowerCase().includes(q) || c.kategori.toLowerCase().includes(q) || c.wilayah.toLowerCase().includes(q);
+        const matchW = !wil || c.wilayah === wil;
+        const matchK = !kat || c.kategori === kat;
+        const matchT = !trans || c.transmisi === trans;
+        return matchQ && matchW && matchK && matchT;
+      });
+
+      if (sort === 'price-asc') list.sort((a, b) => a.hargaLepasKunci - b.hargaLepasKunci);
+      if (sort === 'price-desc') list.sort((a, b) => b.hargaLepasKunci - a.hargaLepasKunci);
+      if (sort === 'seat-desc') list.sort((a, b) => b.kursi - a.kursi);
+
+      const grid = document.getElementById('armada-grid');
+      if (list.length === 0) {
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:30px; color:var(--text-muted);">Tidak ada armada mobil yang sesuai dengan filter pencarian Anda.</p>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(c => buildCarCardHTML(c)).join('');
+    }
+
+    function buildCarCardHTML(c) {
+      const fav = isFavorite(c.id);
+      const basePrice = c.bisaLepasKunci ? c.hargaLepasKunci : c.hargaDenganSopir;
+      const priceLabel = c.bisaLepasKunci ? '/ hari (Lepas Kunci)' : '/ hari (+ Sopir)';
+      return `
+        <article class="card">
+          <div class="card-img-wrap">
+            <img src="${c.imageUrl}" alt="${c.nama}" onerror="this.src='${FALLBACK_CAR_SVG}'" />
+            <span class="badge-cat">${c.kategori}</span>
+            <span class="badge-wilayah">📍 ${c.wilayah}</span>
+            <button class="fav-btn" title="Simpan Armada" onclick="toggleFavorite('${c.id}')">${fav ? '❤️' : '🤍'}</button>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${c.nama}</h3>
+            <div class="spec-grid">
+              <div>⚙️ <strong>${c.transmisi}</strong></div>
+              <div>👥 <strong>${c.kursi} Kursi</strong></div>
+              <div>⛽ <strong>${c.bbm}</strong></div>
+              <div>🧳 <strong>${c.bagasi}</strong></div>
+            </div>
+            <div class="tag-list">
+              <span class="tag ${c.bisaLepasKunci ? 'tag-info' : 'tag-gold'}">
+                ${c.bisaLepasKunci ? '✅ Bisa Lepas Kunci / Sopir' : '👨‍✈️ Wajib Dengan Sopir'}
+              </span>
+              <span class="tag tag-info">Tahun ${c.tahun}</span>
+            </div>
+            <div class="card-footer">
+              <div>
+                <span class="price-tag">${formatRupiah(basePrice)}</span>
+                <small style="display:block; font-size:0.75rem; color:var(--text-muted);">${priceLabel}</small>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <button class="btn btn-sm btn-outline" onclick="openCarDetail('${c.id}')">Spesifikasi</button>
+                <button class="btn btn-sm btn-primary" onclick="selectCarForBooking('${c.id}')">Sewa</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function openCarDetail(id) {
+      const c = state.armada.find(item => item.id === id);
+      if (!c) return;
+      const modalContent = document.getElementById('modal-content');
+      modalContent.innerHTML = `
+        <img src="${c.imageUrl}" alt="${c.nama}" onerror="this.src='${FALLBACK_CAR_SVG}'" style="width:100%; height:235px; object-fit:cover; border-radius:10px; margin-bottom:14px;" />
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
+          <span class="tag tag-info">${c.kategori}</span>
+          <span class="tag tag-gold">📍 Titik Jemput: ${c.wilayah}</span>
+          <span class="tag tag-info">Tahun ${c.tahun}</span>
+        </div>
+        <h2 style="color:var(--navy-dark); margin-bottom:10px;">${c.nama}</h2>
+        
+        <div class="spec-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom:14px;">
+          <div><small style="color:var(--text-muted); display:block;">Transmisi</small><strong>${c.transmisi}</strong></div>
+          <div><small style="color:var(--text-muted); display:block;">Kapasitas</small><strong>${c.kursi} Orang</strong></div>
+          <div><small style="color:var(--text-muted); display:block;">Bahan Bakar</small><strong>${c.bbm}</strong></div>
+          <div><small style="color:var(--text-muted); display:block;">Bagasi</small><strong>${c.bagasi}</strong></div>
+        </div>
+
+        <div style="background:#f8fafc; padding:14px; border-radius:10px; margin-bottom:14px; border:1px solid var(--border);">
+          <strong style="color:var(--navy-dark); display:block; margin-bottom:6px;">Kelengkapan & Fasilitas Kendaraan:</strong>
+          <div class="tag-list" style="margin:0;">
+            ${(c.fasilitas || []).map(f => `<span class="tag tag-info">✔ ${f}</span>`).join('')}
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+          <div style="background:#ecfdf5; padding:12px; border-radius:8px; border:1px solid #a7f3d0;">
+            <small style="color:var(--emerald-deep); display:block;">Tarif Lepas Kunci (Simulasi)</small>
+            <strong style="font-size:1.1rem; color:var(--emerald-deep);">${c.bisaLepasKunci ? formatRupiah(c.hargaLepasKunci) + ' / hari' : 'Tidak Tersedia'}</strong>
+          </div>
+          <div style="background:#fef3c7; padding:12px; border-radius:8px; border:1px solid #fde68a;">
+            <small style="color:#92400e; display:block;">Tarif Dengan Sopir (Simulasi)</small>
+            <strong style="font-size:1.1rem; color:#92400e;">${formatRupiah(c.hargaDenganSopir)} / hari</strong>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-top:1px solid var(--border); padding-top:14px;">
+          <a href="${c.mapsUrl}" target="_blank" rel="noopener" class="btn btn-outline">Titik Jemput Maps ↗</a>
+          <button class="btn btn-primary" onclick="selectCarForBooking('${c.id}')">Lanjut ke Kalkulator Sewa →</button>
+        </div>
+      `;
+      document.getElementById('detail-modal').classList.add('open');
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'detail-modal') {
+        document.getElementById('detail-modal').classList.remove('open');
+      }
+    }
+
+    function selectCarForBooking(carId) {
+      document.getElementById('detail-modal').classList.remove('open');
+      switchTab('booking');
+      document.getElementById('book-car').value = carId;
+      calculateRental();
+      showToast('Unit mobil dipilih pada form kalkulator sewa.');
+    }
+
+    /* ==========================================================================
+       6. REKOMENDASI MOBIL PINTAR (RULE-BASED)
+       ========================================================================== */
+    function renderRekomendasi() {
+      const paxGroup = Number(document.getElementById('rec-pax').value);
+      const rute = document.getElementById('rec-rute').value;
+      const maxBudget = Number(document.getElementById('rec-budget').value);
+
+      const minSeats = paxGroup === 1 ? 4 : (paxGroup === 5 ? 6 : 10);
+
+      const filtered = state.armada.filter(c => {
+        const ruleSeat = c.kursi >= minSeats;
+        const ruleRute = !rute || (c.ruteCocok && c.ruteCocok.includes(rute));
+        const dailyRate = c.bisaLepasKunci ? c.hargaLepasKunci : c.hargaDenganSopir;
+        const ruleBudget = dailyRate <= maxBudget;
+        return ruleSeat && ruleRute && ruleBudget;
+      });
+
+      const grid = document.getElementById('rekomendasi-grid');
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:30px; color:var(--text-muted);">Tidak ditemukan armada yang sesuai dengan kombinasi jumlah penumpang, medan rute, dan anggaran tersebut.</p>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(c => buildCarCardHTML(c)).join('');
+    }
+
+    /* ==========================================================================
+       7. KALKULATOR ESTIMASI SEWA & BOOKING HISTORY
+       ========================================================================== */
+    function initBookingForm() {
+      const select = document.getElementById('book-car');
+      const currentVal = select.value;
+      select.innerHTML = state.armada.map(c => {
+        const rate = c.bisaLepasKunci ? c.hargaLepasKunci : c.hargaDenganSopir;
+        return `<option value="${c.id}">${c.nama} (${c.transmisi} • ${formatRupiah(rate)}/hari)</option>`;
+      }).join('');
+      if (currentVal && state.armada.some(c => c.id === currentVal)) {
+        select.value = currentVal;
+      }
+      calculateRental();
+      renderBookingHistory();
+    }
+
+    function calculateRental() {
+      const carId = document.getElementById('book-car').value;
+      const car = state.armada.find(c => c.id === carId) || state.armada[0];
+      if (!car) return;
+
+      const days = Math.min(14, Math.max(1, Number(document.getElementById('book-days').value) || 1));
+      const serviceSelect = document.getElementById('book-service');
+
+      // Enforce chauffeur if vehicle cannot be self-driven
+      if (!car.bisaLepasKunci && serviceSelect.value === 'lepas') {
+        serviceSelect.value = 'sopir';
+      }
+
+      const serviceType = serviceSelect.value;
+      const dailyCarRate = serviceType === 'lepas' ? car.hargaLepasKunci : car.hargaDenganSopir;
+
+      const addGayo = document.getElementById('addon-gayo').checked ? 100000 : 0;
+      const addBaby = document.getElementById('addon-babyseat').checked ? 50000 : 0;
+      const addonTotalPerDay = addGayo + addBaby;
+
+      const grandTotal = (dailyCarRate + addonTotalPerDay) * days;
+
+      document.getElementById('rental-total-display').textContent = formatRupiah(grandTotal);
+      document.getElementById('rental-breakdown').textContent =
+        `${days} hari × (${formatRupiah(dailyCarRate)} tarif unit ${serviceType === 'lepas' ? 'Lepas Kunci' : '+ Sopir'} + ${formatRupiah(addonTotalPerDay)} add-on)`;
+
+      // Update WhatsApp Demo Link
+      const dateVal = document.getElementById('book-date').value;
+      const pickupVal = document.getElementById('book-pickup').value;
+      const customerVal = document.getElementById('book-customer').value || 'Wisatawan';
+
+      const waText = encodeURIComponent(
+        `Halo AcehDrive Rental (Mode Demo),\n` +
+        `Saya ingin simulasi pemesanan unit:\n` +
+        `• Nama: ${customerVal}\n` +
+        `• Armada: ${car.nama} (${car.transmisi})\n` +
+        `• Paket: ${serviceType === 'lepas' ? 'Lepas Kunci' : 'Dengan Sopir'}\n` +
+        `• Tanggal Mulai: ${dateVal} (${days} Hari)\n` +
+        `• Lokasi Jemput: ${pickupVal}\n` +
+        `• Estimasi Total: ${formatRupiah(grandTotal)}`
+      );
+      document.getElementById('btn-wa-booking').href = `https://wa.me/${car.kontak}?text=${waText}`;
+
+      return {
+        car,
+        days,
+        serviceType,
+        dateVal,
+        pickupVal,
+        customerVal,
+        grandTotal
+      };
+    }
+
+    function saveBookingHistory() {
+      const calc = calculateRental();
+      if (!calc) return;
+
+      const record = {
+        id: 'bk-' + Date.now(),
+        customer: calc.customerVal,
+        carName: calc.car.nama,
+        service: calc.serviceType === 'lepas' ? 'Lepas Kunci' : 'Dengan Sopir',
+        date: calc.dateVal,
+        days: calc.days,
+        pickup: calc.pickupVal,
+        total: calc.grandTotal
+      };
+
+      state.bookings.unshift(record);
+      localStorage.setItem(STORAGE_KEYS.bookings, JSON.stringify(state.bookings));
+      renderBookingHistory();
+      showToast('Simulasi pesanan berhasil disimpan ke riwayat!');
+    }
+
+    function clearBookingHistory() {
+      state.bookings = [];
+      localStorage.setItem(STORAGE_KEYS.bookings, JSON.stringify(state.bookings));
+      renderBookingHistory();
+      showToast('Riwayat simulasi pesanan dibersihkan.');
+    }
+
+    function renderBookingHistory() {
+      const container = document.getElementById('booking-history-list');
+      if (state.bookings.length === 0) {
+        container.innerHTML = `<p style="color:var(--text-muted); font-size:0.9rem;">Belum ada riwayat simulasi pesanan tersimpan. Gunakan kalkulator di samping untuk menyimpan estimasi sewa.</p>`;
+        return;
+      }
+
+      container.innerHTML = state.bookings.map(b => `
+        <div style="border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:10px; background:#f8fafc;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <strong style="color:var(--navy-dark);">${b.carName}</strong>
+            <span class="tag tag-gold">${b.days} Hari • ${b.service}</span>
+          </div>
+          <div style="font-size:0.83rem; color:var(--text-muted);">
+            Pemesan: <strong>${b.customer}</strong> • Tgl: ${b.date} • Jemput: ${b.pickup}
+          </div>
+          <div style="margin-top:6px; font-weight:800; color:var(--turquoise);">
+            Total Estimasi: ${formatRupiah(b.total)}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ==========================================================================
+       8. RENDER ANTAR-JEMPUT & FAVORIT
+       ========================================================================== */
+    function renderAntarJemput() {
+      const grid = document.getElementById('antarjemput-grid');
+      grid.innerHTML = state.antarjemput.map(t => {
+        const waMsg = encodeURIComponent(`Halo AcehDrive Rental (Demo), saya ingin menanyakan paket antar-jemput: ${t.nama}`);
+        return `
+          <article class="card">
+            <div class="card-body">
+              <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                <span class="tag tag-info">⏱ ${t.durasi}</span>
+                <span class="tag tag-gold">🚘 ${t.armada}</span>
+              </div>
+              <h3 class="card-title">${t.nama}</h3>
+              <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:10px;"><strong>Rute:</strong> ${t.rute}</p>
+              <p style="font-size:0.84rem; background:#f8fafc; padding:8px 10px; border-radius:8px; margin-bottom:12px;">
+                ✔ ${t.inklusi}
+              </p>
+              <div class="card-footer">
+                <span class="price-tag">${formatRupiah(t.harga)}</span>
+                <a href="https://wa.me/6281200001001?text=${waMsg}" target="_blank" rel="noopener" class="btn btn-sm btn-wa">Pesan Transfer (Demo)</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderFavorit() {
+      const grid = document.getElementById('favorit-grid');
+      const favCars = state.armada.filter(c => state.favorit.includes(c.id));
+      if (favCars.length === 0) {
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:30px; color:var(--text-muted);">Belum ada armada favorit yang disimpan. Klik ikon hati (🤍) pada kartu mobil.</p>`;
+        return;
+      }
+      grid.innerHTML = favCars.map(c => buildCarCardHTML(c)).join('');
+    }
+
+    /* ==========================================================================
+       9. DASHBOARD ADMIN DEMO (CRUD)
+       ========================================================================== */
+    function switchCrudEntity(entity) {
+      state.crudEntity = entity;
+      document.querySelectorAll('#crud-tabs button').forEach(btn => {
+        const active = btn.getAttribute('data-ent') === entity;
+        btn.className = active ? 'btn btn-navy btn-sm' : 'btn btn-outline btn-sm';
+      });
+      resetCrudForm();
+      renderCrudTable();
+    }
+
+    function renderCrudFormFields(editItem = null) {
+      const wrap = document.getElementById('crud-fields');
+      const ent = state.crudEntity;
+
+      if (ent === 'armada') {
+        wrap.innerHTML = `
+          <div class="form-group"><label>Nama Unit Mobil</label><input id="f-nama" required value="${editItem ? editItem.nama : ''}"/></div>
+          <div class="form-group"><label>Kategori</label>
+            <select id="f-kategori">
+              ${['City Car / Hatchback','MPV Keluarga','SUV / Medan Berat','Minibus / Rombongan','Luxury / VIP'].map(k => `<option ${editItem?.kategori===k?'selected':''}>${k}</option>`).join('')}
+            </select>
+          </div>
+          <div class="form-group"><label>Wilayah Titik Jemput</label>
+            <select id="f-wilayah">
+              ${['Bandara SIM','Banda Aceh','Sabang','Aceh Besar','Takengon','Lhokseumawe'].map(w => `<option ${editItem?.wilayah===w?'selected':''}>${w}</option>`).join('')}
+            </select>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div class="form-group"><label>Transmisi</label>
+              <select id="f-transmisi">
+                <option ${editItem?.transmisi==='Matic'?'selected':''}>Matic</option>
+                <option ${editItem?.transmisi==='Manual'?'selected':''}>Manual</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Kapasitas Kursi</label><input type="number" id="f-kursi" min="2" max="30" value="${editItem ? editItem.kursi : 7}"/></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div class="form-group"><label>Tarif Lepas Kunci (IDR)</label><input type="number" id="f-lepas" value="${editItem ? editItem.hargaLepasKunci : 450000}"/></div>
+            <div class="form-group"><label>Tarif + Sopir (IDR)</label><input type="number" id="f-sopir" value="${editItem ? editItem.hargaDenganSopir : 650000}"/></div>
+          </div>
+          <div class="form-group"><label>Bahan Bakar & Bagasi</label><input id="f-bbm" value="${editItem ? editItem.bbm : 'Bensin'}" placeholder="Bensin / Diesel"/></div>
+          <div class="form-group">
+            <label>Foto Armada (Upload File Lokal / URL Gambar)</label>
+            <div class="img-upload-box">
+              <input type="file" id="f-img-file" accept="image/*" onchange="handleCrudImageFile(event)" style="padding:6px; font-size:0.82rem;" />
+              <div style="font-size:0.75rem; color:var(--text-muted); margin:6px 0;">— atau masukkan URL gambar eksternal —</div>
+              <input type="url" id="f-img-url" placeholder="https://..." value="${editItem && !editItem.imageUrl.startsWith('data:') ? editItem.imageUrl : ''}" oninput="handleCrudImageUrl(this.value)" />
+              <input type="hidden" id="f-img-data" value="${editItem ? editItem.imageUrl : FALLBACK_CAR_SVG}" />
+              <img id="f-img-preview" class="img-preview-thumb" src="${editItem ? editItem.imageUrl : FALLBACK_CAR_SVG}" onerror="this.src='${FALLBACK_CAR_SVG}'" alt="Preview Foto Armada" />
+            </div>
+          </div>
+        `;
+      } else {
+        wrap.innerHTML = `
+          <div class="form-group"><label>Nama Paket Antar-Jemput</label><input id="f-nama" required value="${editItem ? editItem.nama : ''}"/></div>
+          <div class="form-group"><label>Rute Perjalanan</label><input id="f-rute" required value="${editItem ? editItem.rute : ''}"/></div>
+          <div class="form-group"><label>Estimasi Durasi</label><input id="f-durasi" value="${editItem ? editItem.durasi : '± 1 Jam'}"/></div>
+          <div class="form-group"><label>Jenis Armada</label><input id="f-armada" value="${editItem ? editItem.armada : 'Innova Reborn / Avanza'}"/></div>
+          <div class="form-group"><label>Tarif Paket (IDR)</label><input type="number" id="f-harga" value="${editItem ? editItem.harga : 200000}"/></div>
+          <div class="form-group">
+            <label>Foto Ilustrasi Paket (Opsional)</label>
+            <div class="img-upload-box">
+              <input type="file" id="f-img-file" accept="image/*" onchange="handleCrudImageFile(event)" style="padding:6px; font-size:0.82rem;" />
+              <input type="url" id="f-img-url" placeholder="https://..." style="margin-top:6px;" value="${editItem && editItem.imageUrl && !editItem.imageUrl.startsWith('data:') ? editItem.imageUrl : ''}" oninput="handleCrudImageUrl(this.value)" />
+              <input type="hidden" id="f-img-data" value="${editItem && editItem.imageUrl ? editItem.imageUrl : FALLBACK_CAR_SVG}" />
+              <img id="f-img-preview" class="img-preview-thumb" src="${editItem && editItem.imageUrl ? editItem.imageUrl : FALLBACK_CAR_SVG}" onerror="this.src='${FALLBACK_CAR_SVG}'" alt="Preview Paket" />
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Kompresi otomatis gambar lokal menggunakan HTML5 Canvas agar aman untuk localStorage
+    function handleCrudImageFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 640;
+          const scale = Math.min(1, MAX_WIDTH / img.width);
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.72);
+          document.getElementById('f-img-data').value = compressedBase64;
+          document.getElementById('f-img-preview').src = compressedBase64;
+          document.getElementById('f-img-url').value = '';
+          showToast('Foto berhasil dikompresi & siap disimpan!');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleCrudImageUrl(urlVal) {
+      const cleanUrl = urlVal.trim();
+      const targetSrc = cleanUrl || FALLBACK_CAR_SVG;
+      document.getElementById('f-img-data').value = targetSrc;
+      document.getElementById('f-img-preview').src = targetSrc;
+    }
+
+    function resetCrudForm() {
+      document.getElementById('crud-id').value = '';
+      document.getElementById('crud-form-title').textContent = state.crudEntity === 'armada' ? 'Tambah Armada Baru' : 'Tambah Paket Antar-Jemput';
+      renderCrudFormFields(null);
+    }
+
+    function editCrudItem(id) {
+      const item = state[state.crudEntity].find(x => x.id === id);
+      if (!item) return;
+      document.getElementById('crud-id').value = item.id;
+      document.getElementById('crud-form-title').textContent = `Edit Data: ${item.nama}`;
+      renderCrudFormFields(item);
+    }
+
+    function deleteCrudItem(id) {
+      state[state.crudEntity] = state[state.crudEntity].filter(x => x.id !== id);
+      saveEntity(state.crudEntity);
+      renderAll();
+      showToast('Data berhasil dihapus dari localStorage.');
+    }
+
+    function handleCrudSubmit(e) {
+      e.preventDefault();
+      const id = document.getElementById('crud-id').value;
+      const ent = state.crudEntity;
+      const chosenImage = document.getElementById('f-img-data')?.value || FALLBACK_CAR_SVG;
+      let payload = {};
+
+      if (ent === 'armada') {
+        const kursi = Number(document.getElementById('f-kursi').value);
+        payload = {
+          id: id || 'car-' + Date.now(),
+          nama: document.getElementById('f-nama').value,
+          kategori: document.getElementById('f-kategori').value,
+          wilayah: document.getElementById('f-wilayah').value,
+          transmisi: document.getElementById('f-transmisi').value,
+          kursi,
+          bagasi: kursi > 8 ? '6 Koper Besar' : '2 Koper Besar',
+          bbm: document.getElementById('f-bbm').value,
+          tahun: 2024,
+          hargaLepasKunci: Number(document.getElementById('f-lepas').value),
+          hargaDenganSopir: Number(document.getElementById('f-sopir').value),
+          bisaLepasKunci: kursi <= 8,
+          fasilitas: ['AC Dingin', 'Car Charger', 'Kotak P3K'],
+          ruteCocok: kursi > 8 ? ['kota', 'gunung', 'rombongan'] : ['kota', 'gunung'],
+          imageUrl: chosenImage,
+          mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(document.getElementById('f-wilayah').value + ' Aceh')}`,
+          kontak: '6281200001099'
+        };
+      } else {
+        payload = {
+          id: id || 'trf-' + Date.now(),
+          nama: document.getElementById('f-nama').value,
+          rute: document.getElementById('f-rute').value,
+          durasi: document.getElementById('f-durasi').value,
+          armada: document.getElementById('f-armada').value,
+          harga: Number(document.getElementById('f-harga').value),
+          imageUrl: chosenImage,
+          inklusi: 'Mobil + Sopir + BBM (Data Input Admin Demo)'
+        };
+      }
+
+      if (id) {
+        const idx = state[ent].findIndex(x => x.id === id);
+        if (idx > -1) {
+          state[ent][idx] = payload;
+        }
+        showToast('Perubahan data & foto berhasil disimpan!');
+      } else {
+        state[ent].unshift(payload);
+        showToast('Data baru beserta foto berhasil ditambahkan!');
+      }
+
+      try {
+        saveEntity(ent);
+      } catch (err) {
+        showToast('Peringatan: Kapasitas localStorage penuh, gunakan ukuran foto lebih kecil.');
+      }
+      resetCrudForm();
+      renderAll();
+    }
+
+    function renderCrudTable() {
+      const ent = state.crudEntity;
+      const thead = document.getElementById('crud-thead');
+      const tbody = document.getElementById('crud-tbody');
+      const list = state[ent];
+
+      if (ent === 'armada') {
+        thead.innerHTML = `<th>Foto</th><th>Unit Mobil</th><th>Wilayah & Kategori</th><th>Tarif / Hari</th><th>Aksi</th>`;
+        tbody.innerHTML = list.map(c => `
+          <tr>
+            <td><img src="${c.imageUrl}" onerror="this.src='${FALLBACK_CAR_SVG}'" style="width:64px; height:42px; object-fit:cover; border-radius:6px; border:1px solid var(--border);"/></td>
+            <td><strong>${c.nama}</strong><br><small style="color:var(--text-muted);">${c.transmisi} • ${c.kursi} Kursi</small></td>
+            <td>${c.wilayah}<br><small>${c.kategori}</small></td>
+            <td>${formatRupiah(c.hargaLepasKunci)}</td>
+            <td style="white-space:nowrap;">
+              <button class="btn btn-sm btn-outline" onclick="editCrudItem('${c.id}')">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteCrudItem('${c.id}')">Hapus</button>
+            </td>
+          </tr>
+        `).join('');
+      } else {
+        thead.innerHTML = `<th>Foto</th><th>Paket Transfer</th><th>Armada & Durasi</th><th>Tarif</th><th>Aksi</th>`;
+        tbody.innerHTML = list.map(t => `
+          <tr>
+            <td><img src="${t.imageUrl || FALLBACK_CAR_SVG}" onerror="this.src='${FALLBACK_CAR_SVG}'" style="width:64px; height:42px; object-fit:cover; border-radius:6px; border:1px solid var(--border);"/></td>
+            <td><strong>${t.nama}</strong></td>
+            <td>${t.armada} (${t.durasi})</td>
+            <td>${formatRupiah(t.harga)}</td>
+            <td style="white-space:nowrap;">
+              <button class="btn btn-sm btn-outline" onclick="editCrudItem('${t.id}')">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteCrudItem('${t.id}')">Hapus</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    /* ==========================================================================
+       10. BOOTSTRAP APPLICATION
+       ========================================================================== */
+    function renderAll() {
+      renderArmada();
+      renderRekomendasi();
+      initBookingForm();
+      renderAntarJemput();
+      renderFavorit();
+      renderCrudTable();
+      updateFavCounter();
+    }
+
+    initStorage();
+    setLang(state.lang);
+    resetCrudForm();
+    renderAll();
+  </script>
+</body>
+</html>
